@@ -90,6 +90,17 @@
     margin: 1rem 0;
   }
   .highlight p { margin: 0; color: var(--text2); }
+  .delete-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  .delete-box h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+  .delete-box p { margin-bottom: 0.5rem; }
+  .delete-box ol { color: var(--text2); font-size: 15px; padding-left: 1.5rem; }
+  .delete-box ol li { margin-bottom: 0.5rem; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .footer {
@@ -128,7 +139,6 @@
 
   <section>
     <h2>2. Información que recopilamos</h2>
-
     <p><strong>2.1 Información que tú nos proporcionas (opcional)</strong></p>
     <p>El ranking global es una función opcional que requiere iniciar sesión con Google. Si decides usarla, recopilamos:</p>
     <ul>
@@ -149,11 +159,10 @@
     </ul>
 
     <p><strong>2.3 Información recopilada automáticamente</strong></p>
-    <p>Los servicios de terceros integrados en la Aplicación pueden recopilar automáticamente:</p>
     <ul>
       <li>Identificador publicitario del dispositivo (Android Advertising ID)</li>
       <li>Información sobre el dispositivo (modelo, sistema operativo, idioma)</li>
-      <li>Datos de uso y rendimiento de la aplicación (a través de Firebase Analytics y Crashlytics)</li>
+      <li>Datos de uso y rendimiento de la aplicación (Firebase Analytics y Crashlytics)</li>
       <li>Información de red (dirección IP, tipo de conexión)</li>
     </ul>
   </section>
@@ -173,14 +182,12 @@
 
   <section>
     <h2>4. Servicios de terceros</h2>
-    <p>La Aplicación utiliza los siguientes servicios de terceros, cada uno con su propia política de privacidad:</p>
-
     <p><strong>Google Firebase (Authentication, Firestore, Analytics, Crashlytics)</strong><br>
     Proveedor: Google LLC. Usado para autenticación de usuarios, almacenamiento del ranking, análisis de uso y reporte de errores.<br>
     <a href="https://firebase.google.com/support/privacy" target="_blank">Política de privacidad de Firebase →</a></p>
 
     <p><strong>Google AdMob</strong><br>
-    Proveedor: Google LLC. Usado para mostrar anuncios publicitarios dentro de la Aplicación, incluyendo anuncios intersticiales y con recompensa.<br>
+    Proveedor: Google LLC. Usado para mostrar anuncios publicitarios dentro de la Aplicación.<br>
     <a href="https://policies.google.com/privacy" target="_blank">Política de privacidad de Google →</a></p>
 
     <p><strong>Google Sign-In</strong><br>
@@ -195,60 +202,74 @@
   <section>
     <h2>5. Almacenamiento de datos</h2>
     <p><strong>Datos locales:</strong> La racha de días, vidas, mejor puntaje y fecha de última partida se almacenan únicamente en tu dispositivo mediante SharedPreferences. Estos datos no son accesibles por nosotros ni por terceros.</p>
-    <p><strong>Datos en la nube:</strong> Si inicias sesión, tu nombre, foto y puntajes se almacenan en Google Cloud Firestore (servidores de Google, principalmente en Estados Unidos y/o la Unión Europea). La retención de estos datos se rige por los términos de servicio de Firebase.</p>
-    <p><strong>Preguntas del juego:</strong> Las 600+ preguntas del juego se almacenan localmente dentro de la Aplicación (archivo JSON empaquetado). No se transmiten ni recopilan.</p>
+    <p><strong>Datos en la nube:</strong> Si inicias sesión, tu nombre, foto y puntajes se almacenan en Google Cloud Firestore (servidores de Google). La retención de estos datos se rige por los términos de servicio de Firebase.</p>
+    <p><strong>Preguntas del juego:</strong> Las 600+ preguntas del juego se almacenan localmente dentro de la Aplicación. No se transmiten ni recopilan.</p>
   </section>
 
   <section>
     <h2>6. Publicidad y el Android Advertising ID</h2>
-    <p>La Aplicación utiliza Google AdMob para mostrar anuncios. AdMob puede usar el Android Advertising ID (AD_ID) de tu dispositivo para personalizar anuncios. Este identificador es administrado por tu dispositivo Android y puedes:</p>
+    <p>La Aplicación utiliza Google AdMob para mostrar anuncios. AdMob puede usar el Android Advertising ID (AD_ID) de tu dispositivo para personalizar anuncios. Puedes gestionarlo en:</p>
     <ul>
-      <li>Restablecerlo en <em>Ajustes → Google → Anuncios → Restablecer ID de publicidad</em></li>
-      <li>Optar por no recibir anuncios personalizados en la misma sección</li>
+      <li>Ajustes → Google → Anuncios → Restablecer ID de publicidad</li>
+      <li>Ajustes → Google → Anuncios → Inhabilitar personalización de anuncios</li>
     </ul>
-    <p>La Aplicación declara el permiso <code>AD_ID</code> requerido para Android 13 y versiones superiores.</p>
   </section>
 
   <section>
     <h2>7. Menores de edad</h2>
-    <p>La Aplicación está clasificada para mayores de 13 años en Google Play Store. No recopilamos intencionalmente información personal de niños menores de 13 años.</p>
-    <p>Si eres padre o tutor y tienes razones para creer que un menor de 13 años nos ha proporcionado información personal, contáctanos a través del correo electrónico indicado al final de esta política para solicitar su eliminación.</p>
+    <p>La Aplicación está clasificada para mayores de 13 años en Google Play Store. No recopilamos intencionalmente información personal de niños menores de 13 años. Si eres padre o tutor y crees que un menor nos ha proporcionado datos, contáctanos para solicitar su eliminación.</p>
+  </section>
+
+  <section id="eliminacion-de-cuenta">
+    <h2>8. Eliminación de cuenta y datos</h2>
+    <p>Si iniciaste sesión con Google en Trivia Latam, puedes solicitar la eliminación completa de tu cuenta y todos tus datos asociados en cualquier momento.</p>
+
+    <div class="delete-box">
+      <h3>¿Qué datos se eliminan?</h3>
+      <ul>
+        <li>Tu entrada en el ranking global (nombre, foto, puntajes) en Firestore</li>
+        <li>Tu UID de Firebase asociado a la aplicación</li>
+      </ul>
+      <p style="margin-top: 0.75rem;"><strong>Nota:</strong> Los datos almacenados localmente en tu dispositivo (racha, vidas, mejor puntaje) se eliminan desinstalando la aplicación.</p>
+    </div>
+
+    <div class="delete-box" style="margin-top: 1rem;">
+      <h3>Cómo solicitar la eliminación</h3>
+      <p><strong>Opción 1 — Por email (recomendado):</strong></p>
+      <ol>
+        <li>Envía un correo a <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a></li>
+        <li>Asunto: "Eliminación de cuenta — Trivia Latam"</li>
+        <li>Incluye el email de tu cuenta de Google con la que iniciaste sesión</li>
+        <li>Procesamos la solicitud dentro de los 30 días hábiles siguientes</li>
+      </ol>
+      <p style="margin-top: 0.75rem;"><strong>Opción 2 — Desinstalando la app:</strong></p>
+      <p>Desinstalar la aplicación elimina todos los datos locales de tu dispositivo. Para eliminar también tus datos del ranking global, usa la Opción 1.</p>
+    </div>
   </section>
 
   <section>
-    <h2>8. Tus derechos</h2>
-    <p>Dependiendo de tu ubicación, puedes tener los siguientes derechos respecto a tus datos personales:</p>
-    <ul>
-      <li><strong>Acceso:</strong> conocer qué datos tenemos sobre ti</li>
-      <li><strong>Rectificación:</strong> corregir datos inexactos</li>
-      <li><strong>Eliminación:</strong> solicitar la eliminación de tus datos del ranking</li>
-      <li><strong>Portabilidad:</strong> recibir una copia de tus datos</li>
-      <li><strong>Retirar el consentimiento:</strong> cerrar sesión elimina tu acceso al ranking, pero los datos históricos pueden persistir en Firestore hasta que solicites su eliminación</li>
-    </ul>
+    <h2>9. Tus derechos</h2>
+    <p>Dependiendo de tu ubicación, puedes tener los siguientes derechos respecto a tus datos personales: acceso, rectificación, eliminación, portabilidad y retirada del consentimiento.</p>
     <p>Para ejercer cualquiera de estos derechos, contáctanos en <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a>.</p>
   </section>
 
   <section>
-    <h2>9. Seguridad</h2>
-    <p>Implementamos medidas técnicas razonables para proteger la información almacenada en nuestros sistemas, incluyendo el uso de HTTPS en todas las comunicaciones con Firebase y AdMob, autenticación mediante Google OAuth y tokens JWT, y restricciones de acceso a la base de datos Firestore.</p>
-    <p>Sin embargo, ningún sistema de seguridad es completamente infalible. No podemos garantizar la seguridad absoluta de la información transmitida a través de internet.</p>
+    <h2>10. Seguridad</h2>
+    <p>Implementamos medidas técnicas razonables para proteger la información, incluyendo HTTPS en todas las comunicaciones, autenticación mediante Google OAuth y tokens JWT, y restricciones de acceso a Firestore.</p>
   </section>
 
   <section>
-    <h2>10. Cambios a esta política</h2>
-    <p>Podemos actualizar esta política de privacidad periódicamente. Te notificaremos sobre cambios significativos mediante una actualización de la Aplicación en Google Play Store. Te recomendamos revisar esta página ocasionalmente.</p>
-    <p>La fecha de "última actualización" al inicio del documento indica cuándo se realizó la revisión más reciente.</p>
+    <h2>11. Cambios a esta política</h2>
+    <p>Podemos actualizar esta política periódicamente. Te notificaremos sobre cambios significativos mediante una actualización de la Aplicación en Google Play Store.</p>
   </section>
 
   <section>
-    <h2>11. Contacto</h2>
-    <p>Si tienes preguntas, comentarios o solicitudes relacionadas con esta política de privacidad, puedes contactarnos:</p>
+    <h2>12. Contacto</h2>
     <ul>
       <li><strong>Email:</strong> <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a></li>
       <li><strong>Desarrollador:</strong> GP1 DevStudio</li>
       <li><strong>Aplicación:</strong> Trivia Latam (com.gpalm.trivialatam)</li>
     </ul>
-    <p>Intentamos responder todas las solicitudes dentro de 30 días hábiles.</p>
   </section>
 
   <div class="footer">
